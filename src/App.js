@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import ChatApp from './Chat';
+import LoginPage from './Login';
+import SignUp from './Signup'
 function App() {
+  // 가정: accessToken이 localStorage에 저장되어 있다.
+  // const accessToken = localStorage.getItem('accessToken');
+
+  // if (!accessToken) {
+  //     return <LoginPage />;
+  // }
+  // return <ChatApp />;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<ChatApp />} />
+        <Route path='/signup' element={<SignUp />} />
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
